@@ -30,7 +30,7 @@ words = {
     'race': [['human'], ['elf'], ['orc'], ['ogre'], ['halfling'], ['fairy'], ['dragonborn'], ['aasimar'], ['aarakocra'], ['warforged'], ['kalashtar']],
     'genshop': [['?an', '@adjopinion', '@adjage', '@shop'], ['?an', '@adjopinion', '@adjmaterial', '@shop'], ['?an', '@adjage', '@adjmaterial', '@shop']],
     'genbuilding': [['?an', '@adjopinion', '@adjage', '@building'], ['?an', '@adjopinion', '@adjmaterial', '@shop'], ['?an', '@adjage', '@adjmaterial', '@building']],
-    'genbuildinglist': [['@genbuilding'], ['@genbuildinglist', ';', '@genbuildinglist']],
+    'genbuildinglist': [['@genbuilding'], ['@genbuilding', ';', '@genbuildinglist']],
     'genregion': [['?an', '@adjsize', '@region'], ['?an', '@adjcolour', '@region'], ['?an', '@adjphysical', '@region']],
     'genfeature': [['?an', '@adjopinion', '@feature'], ['?an', '@adjsize', '@feature'], ['?an', '@adjage', '@feature'], ['?an', '@adjcolour', '@feature']],
     'genlocation': [['@genregion', 'in which', '@genbuilding', 'stands'], ['@genregion', 'featuring', '@genfeature'], ['@genregion', 'with a street featuring:', '@genbuildinglist', '; and', '@genbuilding'], ['@genregion', 'in which a town sits with:', '@genbuildinglist', '; and', '@genbuilding'], ['@genregion', 'containing a small settlement with', '@genbuildinglist', '; and', '@genbuilding']],
@@ -79,7 +79,7 @@ def Generate_World():
 
     sentence = " ".join(main_list)
     sentence = re.sub(r' \.', '.', sentence)
-    sentence = re.sub(r' ;', '.', sentence)
+    sentence = re.sub(r' ;', ';', sentence)
 
     return sentence
 
