@@ -137,7 +137,7 @@ elif button5:
 elif button6:
     st.session_state.generatedWorld = Generate_World(['@genencounter'])
 
-st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{st.session_state.generatedWorld}</p>', unsafe_allow_html=True)
 
 if st.session_state.generatedWorld != "":
     buttonImage = st.button('Generate Image')
