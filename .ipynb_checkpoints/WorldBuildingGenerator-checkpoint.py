@@ -140,32 +140,3 @@ else:
 if anytrue:
     st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
     buttonImage = st.button('Generate Image')
-    
-
-REPLICATE_MODEL_ENDPOINTSTABILITY = "stability-ai/sdxl:2b017d9b67edd2ee1401238df49d75da53c523f36e363881e057f5dc3ed3c5b2"
-
-if buttonImage:
-    with st.spinner('Generating image...'):
-        try:
-            output = replicate.run(
-                            REPLICATE_MODEL_ENDPOINTSTABILITY,
-                            input={
-                                "prompt": prompt,
-                                "width": 768,
-                                "height": 768,
-                                "num_outputs": 1,
-                                "scheduler": "K_EULER",
-                                "num_inference_steps": 25,
-                                "guidance_scale": 7.5,
-                                "prompt_stregth":  0.8,
-                                "refine": "expert_ensemble_refiner",
-                                "high_noise_frac":  0.8
-                            }
-            )
-            if output:
-                # Assuming `output` is a URL to the generated image
-                st.image(output[0], caption="Generated Image")
-            else:
-                st.error("No output from the model")
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
