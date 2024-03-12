@@ -145,6 +145,7 @@ if anytrue:
     
 buttonImage = st.button('Generate Image')
 
+REPLICATE_API_TOKEN = "r8_JAeYYpbpAiZkPNcdIUhJKuJnHQ3YiOQ3NW7hz"
 REPLICATE_MODEL_ENDPOINTSTABILITY = "stability-ai/sdxl:2b017d9b67edd2ee1401238df49d75da53c523f36e363881e057f5dc3ed3c5b2"
 
 if buttonImage:
