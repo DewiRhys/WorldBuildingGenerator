@@ -121,7 +121,9 @@ with col6:
     button6 = st.button('Generate Encounter')
 
 anytrue = True
-    
+
+generatedWorld = ""
+
 if button1:
     generatedWorld = Generate_World(['@gendescription', '@genencounter'])
 elif button2:
@@ -139,8 +141,8 @@ else:
 
 if anytrue:
     st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
-    buttonImage = st.button('Generate Image')
     
+buttonImage = st.button('Generate Image')
 
 REPLICATE_MODEL_ENDPOINTSTABILITY = "stability-ai/sdxl:2b017d9b67edd2ee1401238df49d75da53c523f36e363881e057f5dc3ed3c5b2"
 
