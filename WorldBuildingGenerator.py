@@ -121,8 +121,6 @@ with col5:
 with col6:
     button6 = st.button('Generate Encounter')
 
-anytrue = True
-
 generatedWorld = ""
 
 if button1:
@@ -137,11 +135,8 @@ elif button5:
     generatedWorld = Generate_World(['@genperson'])
 elif button6:
     generatedWorld = Generate_World(['@genencounter'])
-else:
-    anytrue = False
 
-if anytrue:
-    st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
     
 buttonImage = st.button('Generate Image')
 
