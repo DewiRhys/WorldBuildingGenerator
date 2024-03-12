@@ -83,7 +83,10 @@ def Generate_World(starting_point):
 
     return sentence
 
-# Set the page title
+st.set_page_config(page_title=" title :)",
+                   page_icon=":skull:",
+                   layout="centered")
+
 st.markdown('<p style="color:#f9f2eb; font-size: 60px;">World Building Generator</p>', unsafe_allow_html=True)
 
 st.markdown(
