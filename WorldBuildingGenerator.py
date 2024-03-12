@@ -120,6 +120,11 @@ with col5:
 
 with col6:
     button6 = st.button('Generate Encounter')
+    
+try:
+    generatedWorld
+except NameError:
+    generatedWorld = ""
 
 if button1:
     generatedWorld = Generate_World(['@gendescription', '@genencounter'])
