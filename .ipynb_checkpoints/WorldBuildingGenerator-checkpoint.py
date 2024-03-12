@@ -83,7 +83,7 @@ def Generate_World(starting_point):
 
     return sentence
 
-st.set_page_config(page_title=" title :)",
+st.set_page_config(page_title="World Building Generator",
                    page_icon=":skull:",
                    layout="centered")
 
