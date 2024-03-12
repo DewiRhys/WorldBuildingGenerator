@@ -53,8 +53,8 @@ def get_random(lst):
 def insert_position(position, list1, list2):
     return list1[:position] + list2 + list1[position:]
 
-def Generate_World():
-    main_list = ['@gendescription', '@genencounter']
+def Generate_World(starting_point):
+    main_list = starting_point
 
     ongoing = True
 
@@ -97,7 +97,43 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-submitted = st.button('Generate')
+anytrue = False
+
+submitted = st.button('Generate World')
 if submitted:
-    generatedWorld = Generate_World()
+    generatedWorld = Generate_World(['@gendescription', '@genencounter'])
+    anytrue = True
+submitted = False
+
+submitted = st.button('Generate Location')
+if submitted:
+    generatedWorld = Generate_World(['@genlocation'])
+    anytrue = True
+submitted = False
+
+submitted = st.button('Generate Building')
+if submitted:
+    generatedWorld = Generate_World(['@genbuilding'])
+    anytrue = True
+submitted = False
+
+submitted = st.button('Generate Shop')
+if submitted:
+    generatedWorld = Generate_World(['@genshop'])
+    anytrue = True
+submitted = False
+
+submitted = st.button('Generate Character')
+if submitted:
+    generatedWorld = Generate_World(['@genperson'])
+    anytrue = True
+submitted = False
+
+submitted = st.button('Generate Encounter')
+if submitted:
+    generatedWorld = Generate_World(['@genencounter'])
+    anytrue = True
+submitted = False
+
+if anytrue:
     st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
