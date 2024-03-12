@@ -100,43 +100,42 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-anytrue = False
+col1, col2, col3, col4, col5, col6 = st.columns(6)
 
-submitted = st.button('Generate World')
-if submitted:
+with col1:
+    button1 = st.button('Generate World')
+
+with col2:
+    button2 = st.button('Generate Location')
+
+with col3:
+    button3 = st.button('Generate Building')
+    
+with col4:
+    button4 = st.button('Generate Shop')
+
+with col5:
+    button5 = st.button('Generate Character')
+
+with col6:
+    button6 = st.button('Generate Encounter')
+
+anytrue = True
+    
+if button1:
     generatedWorld = Generate_World(['@gendescription', '@genencounter'])
-    anytrue = True
-submitted = False
-
-submitted = st.button('Generate Location')
-if submitted:
+else if button2:
     generatedWorld = Generate_World(['@genlocation'])
-    anytrue = True
-submitted = False
-
-submitted = st.button('Generate Building')
-if submitted:
+else if button3:
     generatedWorld = Generate_World(['@genbuilding'])
-    anytrue = True
-submitted = False
-
-submitted = st.button('Generate Shop')
-if submitted:
+else if button4:
     generatedWorld = Generate_World(['@genshop'])
-    anytrue = True
-submitted = False
-
-submitted = st.button('Generate Character')
-if submitted:
+else if button5:
     generatedWorld = Generate_World(['@genperson'])
-    anytrue = True
-submitted = False
-
-submitted = st.button('Generate Encounter')
-if submitted:
+else if button6:
     generatedWorld = Generate_World(['@genencounter'])
-    anytrue = True
-submitted = False
+else:
+    anytrue = False
 
 if anytrue:
     st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
