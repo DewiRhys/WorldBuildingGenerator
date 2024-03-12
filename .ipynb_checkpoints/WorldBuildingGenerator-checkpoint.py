@@ -1,5 +1,3 @@
-# streamlit run "C:\Users\dewir\OneDrive\Documents\Digital Futures\Python\Streamlit\StreamLitPlayground.py"
-
 import streamlit as st
 import pandas as pd
 import numpy as np
