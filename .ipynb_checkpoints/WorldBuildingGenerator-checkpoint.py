@@ -121,53 +121,51 @@ with col5:
 with col6:
     button6 = st.button('Generate Encounter')
     
-try:
-    generatedWorld
-except NameError:
-    generatedWorld = ""
+if 'generatedWorld' not in st.session_state:
+    st.session_state.generatedWorld = ""
 
 if button1:
-    generatedWorld = Generate_World(['@gendescription', '@genencounter'])
+    st.session_state.generatedWorld = Generate_World(['@gendescription', '@genencounter'])
 elif button2:
-    generatedWorld = Generate_World(['@genlocation'])
+    st.session_state.generatedWorld = Generate_World(['@genlocation'])
 elif button3:
-    generatedWorld = Generate_World(['@genbuilding'])
+    st.session_state.generatedWorld = Generate_World(['@genbuilding'])
 elif button4:
-    generatedWorld = Generate_World(['@genshop'])
+    st.session_state.generatedWorld = Generate_World(['@genshop'])
 elif button5:
-    generatedWorld = Generate_World(['@genperson'])
+    st.session_state.generatedWorld = Generate_World(['@genperson'])
 elif button6:
-    generatedWorld = Generate_World(['@genencounter'])
+    st.session_state.generatedWorld = Generate_World(['@genencounter'])
 
 st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
-    
-buttonImage = st.button('Generate Image')
 
-REPLICATE_MODEL_ENDPOINTSTABILITY = "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b"
+if st.session_state.generatedWorld != "":
+    buttonImage = st.button('Generate Image')
 
-if buttonImage:
-    st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
-    with st.spinner('Generating image...'):
-        try:
-            output = replicate.run(
-                            REPLICATE_MODEL_ENDPOINTSTABILITY,
-                            input={
-                                "prompt": generatedWorld,
-                                "width": 768,
-                                "height": 768,
-                                "num_outputs": 1,
-                                "scheduler": "K_EULER",
-                                "num_inference_steps": 25,
-                                "guidance_scale": 7.5,
-                                "prompt_stregth":  0.8,
-                                "refine": "expert_ensemble_refiner",
-                                "high_noise_frac":  0.8
-                            }
-            )
-            if output:
-                # Assuming `output` is a URL to the generated image
-                st.image(output[0], caption="Generated Image")
-            else:
-                st.error("No output from the model")
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
+    REPLICATE_MODEL_ENDPOINTSTABILITY = "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b"
+
+    if buttonImage:
+        with st.spinner('Generating image...'):
+            try:
+                output = replicate.run(
+                                REPLICATE_MODEL_ENDPOINTSTABILITY,
+                                input={
+                                    "prompt": generatedWorld,
+                                    "width": 768,
+                                    "height": 768,
+                                    "num_outputs": 1,
+                                    "scheduler": "K_EULER",
+                                    "num_inference_steps": 25,
+                                    "guidance_scale": 7.5,
+                                    "prompt_stregth":  0.8,
+                                    "refine": "expert_ensemble_refiner",
+                                    "high_noise_frac":  0.8
+                                }
+                )
+                if output:
+                    # Assuming `output` is a URL to the generated image
+                    st.image(output[0], caption="Generated Image")
+                else:
+                    st.error("No output from the model")
+            except Exception as e:
+                st.error(f"An error occurred: {e}")
