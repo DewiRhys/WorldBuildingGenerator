@@ -122,7 +122,7 @@ with col6:
     button6 = st.button('Generate Encounter')
     
 if 'generatedWorld' not in st.session_state:
-    st.session_state.generatedWorld = " "
+    st.session_state.generatedWorld = ""
 
 if button1:
     st.session_state.generatedWorld = Generate_World(['@gendescription', '@genencounter'])
@@ -150,7 +150,7 @@ if st.session_state.generatedWorld != "":
                 output = replicate.run(
                                 REPLICATE_MODEL_ENDPOINTSTABILITY,
                                 input={
-                                    "prompt": generatedWorld,
+                                    "prompt": st.session_state.generatedWorld,
                                     "width": 768,
                                     "height": 768,
                                     "num_outputs": 1,
