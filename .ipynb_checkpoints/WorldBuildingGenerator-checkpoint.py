@@ -124,15 +124,15 @@ anytrue = True
     
 if button1:
     generatedWorld = Generate_World(['@gendescription', '@genencounter'])
-else if button2:
+elif button2:
     generatedWorld = Generate_World(['@genlocation'])
-else if button3:
+elif button3:
     generatedWorld = Generate_World(['@genbuilding'])
-else if button4:
+elif button4:
     generatedWorld = Generate_World(['@genshop'])
-else if button5:
+elif button5:
     generatedWorld = Generate_World(['@genperson'])
-else if button6:
+elif button6:
     generatedWorld = Generate_World(['@genencounter'])
 else:
     anytrue = False
