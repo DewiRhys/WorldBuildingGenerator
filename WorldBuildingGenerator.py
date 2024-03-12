@@ -99,39 +99,37 @@ st.markdown(
 
 anytrue = False
 
-col1, col2, col3, col4, col5, col6 = st.columns(6)
-
-submitted = st.col1.button('Generate World')
+submitted = st.button('Generate World')
 if submitted:
     generatedWorld = Generate_World(['@gendescription', '@genencounter'])
     anytrue = True
 submitted = False
 
-submitted = st.col2.button('Generate Location')
+submitted = st.button('Generate Location')
 if submitted:
     generatedWorld = Generate_World(['@genlocation'])
     anytrue = True
 submitted = False
 
-submitted = st.col3.button('Generate Building')
+submitted = st.button('Generate Building')
 if submitted:
     generatedWorld = Generate_World(['@genbuilding'])
     anytrue = True
 submitted = False
 
-submitted = st.col4.button('Generate Shop')
+submitted = st.button('Generate Shop')
 if submitted:
     generatedWorld = Generate_World(['@genshop'])
     anytrue = True
 submitted = False
 
-submitted = st.col5.button('Generate Character')
+submitted = st.button('Generate Character')
 if submitted:
     generatedWorld = Generate_World(['@genperson'])
     anytrue = True
 submitted = False
 
-submitted = st.col6.button('Generate Encounter')
+submitted = st.button('Generate Encounter')
 if submitted:
     generatedWorld = Generate_World(['@genencounter'])
     anytrue = True
