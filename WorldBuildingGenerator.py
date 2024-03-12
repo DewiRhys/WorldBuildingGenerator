@@ -79,6 +79,7 @@ def Generate_World():
 
     sentence = " ".join(main_list)
     sentence = re.sub(r' \.', '.', sentence)
+    sentence = re.sub(r' \;', '.', sentence)
 
     return sentence
 
