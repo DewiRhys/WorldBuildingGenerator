@@ -121,7 +121,8 @@ with col5:
 with col6:
     button6 = st.button('Generate Encounter')
 
-generatedWorld = ""
+if generatedWorld == None:
+    generatedWorld = ""
 
 if button1:
     generatedWorld = Generate_World(['@gendescription', '@genencounter'])
