@@ -137,7 +137,6 @@ elif button5:
 elif button6:
     st.session_state.generatedWorld = Generate_World(['@genencounter'])
 
-    
 generatedWorld = st.session_state.generatedWorld
 st.markdown(f'<p style="color:#f9f2eb; font-size: 40px;">{generatedWorld}</p>', unsafe_allow_html=True)
 
